@@ -1,0 +1,10 @@
+<h1>Akciók</h1>
+
+<div class="card" *ngFor="let product of sortBy('discount')">
+  <div class="card-body">
+    <h5 class="card-title">{{product.name}} -{{product.discount}}%</h5>
+    <p class="card-text">Leírás: {{product.descrpition}}</p>
+    <h6 class="card-text">{{product.originalFee}} helyett</h6>
+    <h3 class="card-text" style="color: red;">{{product.discountedFee}}</h3>
+  </div>
+</div>
