@@ -38,6 +38,12 @@ hasDiscount;
     });
 }
 
+ refresh() {
+   this.mask = true;
+   this.loadingDone.emit(this.mask);
+    this.showConfig();
+ }
+
 sortBy(prop: string) {
   return this.products.sort(
         (a, b) => Number(a[prop]) < Number(b[prop]) ? 1 : Number(a[prop]) === Number(b[prop]) ? 0 : -1);

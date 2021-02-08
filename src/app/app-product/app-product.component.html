@@ -2,6 +2,8 @@
 
 <h3 [hidden]="hasDiscount">Az étterem jelenleg nem kínál akciós áron ételeket!</h3>
 
+<button mat-raised-button color="accent" (click)="refresh()">Frissítés</button>
+
 <div [hidden]="!hasDiscount" class="card" *ngFor="let product of sortBy('discount')">
   <div class="card-body">
     <h5 class="card-title">{{product.name}} -{{product.discount}}%</h5>
