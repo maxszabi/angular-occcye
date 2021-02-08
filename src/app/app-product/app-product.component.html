@@ -1,6 +1,8 @@
 <h1>Akciók</h1>
 
-<div class="card" *ngFor="let product of sortBy('discount')">
+<h3 [hidden]="hasDiscount">Az étterem jelenleg nem kínál akciós áron ételeket!</h3>
+
+<div [hidden]="!hasDiscount" class="card" *ngFor="let product of sortBy('discount')">
   <div class="card-body">
     <h5 class="card-title">{{product.name}} -{{product.discount}}%</h5>
     <p class="card-text">Leírás: {{product.descrpition}}</p>

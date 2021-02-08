@@ -1,4 +1,4 @@
-<div class="modal">
+<div class="spinner-background" [hidden]="!loadingMask">
 <mat-spinner></mat-spinner>
 </div>
-<app-app-product></app-app-product>
+<app-app-product [mask]="loadingMask" (loadingDone)="loadingMask=$event"></app-app-product>

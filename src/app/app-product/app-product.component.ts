@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -9,6 +9,10 @@ import { HttpClient } from '@angular/common/http';
 export class AppProductComponent implements OnInit {
   
 products;
+hasDiscount;
+
+ @Input()  mask: boolean;
+  @Output() loadingDone = new EventEmitter<boolean>();
 
   constructor(private httpC: HttpClient) {
     
@@ -19,9 +23,17 @@ products;
   }
 
   showConfig() {
+    this.hasDiscount = false;
+    console.log(this.mask);
   this.getShippingPrices()
     .subscribe((res)=> {
+      this.mask = false;
+      this.loadingDone.emit(this.mask);
       this.products = res['products'];
+      this.hasDiscount = Array.isArray(this.products);
+      if (this.hasDiscount) {
+        this.hasDiscount = this.products.length > 0;
+      }
       console.log(this.products);
     });
 }
